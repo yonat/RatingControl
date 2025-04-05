@@ -61,6 +61,49 @@ Alternatively, disable user interaction:
 ratingControl.isUserInteractionEnabled = false
 ```
 
+## SwiftUI Support
+
+### RatingView
+
+Use the SwiftUI wrapper to integrate ratings in your SwiftUI views:
+
+```swift
+struct ContentView: View {
+    @State private var rating: Double = 3.5
+    
+    var body: some View {
+        VStack {
+            // Basic usage
+            RatingView(value: $rating)
+            
+            // Show current value
+            Text("Rating: \(rating, specifier: "%.1f")")
+            
+            // Customization
+            RatingView(value: $rating, maxValue: 7)
+                .emptyImage(UIImage(systemName: "heart")!)
+                .filledImage(UIImage(systemName: "heart.fill")!)
+                .spacing(10)
+                .imageSize(CGSize(width: 32, height: 32))
+                .accentColor(.red)
+                
+            // Fixed (non-interactive) rating
+            RatingView(value: 4.5)
+                .disabled(true)
+        }
+    }
+}
+```
+
+### Available Modifiers
+
+- `emptyImage(_:)` - Sets the image for empty (unfilled) parts
+- `filledImage(_:)` - Sets the image for filled parts
+- `spacing(_:)` - Sets spacing between images
+- `imageSize(_:)` - Sets custom size for the images
+- Use SwiftUI's `.accentColor(_:)` to change the color
+- Use SwiftUI's `.disabled(_:)` to make it non-interactive
+
 ## Installation
 
 ### CocoaPods:

@@ -86,8 +86,7 @@ public class RatingControl: UIControl {
     }
 
     override public func updateConstraints() {
-        let width = CGFloat(maxValue) * currentImageSize.width + CGFloat(maxValue - 1) * spacing
-        widthConstraint?.constant = width
+        widthConstraint?.constant = effectiveWidth
         heightConstraint?.constant = currentImageSize.height
 
         super.updateConstraints()
@@ -107,6 +106,11 @@ public class RatingControl: UIControl {
     private var widthConstraint: NSLayoutConstraint?
     private var heightConstraint: NSLayoutConstraint?
     private var currentImageSize: CGSize = .zero
+
+    // Total width of all stars and spacing between them
+    private var effectiveWidth: CGFloat {
+        return CGFloat(maxValue) * currentImageSize.width + CGFloat(maxValue - 1) * spacing
+    }
 
     // MARK: - Setup
 
@@ -185,9 +189,7 @@ public class RatingControl: UIControl {
 
     @objc private func handleGesture(_ gesture: UIGestureRecognizer) {
         let location = gesture.location(in: self)
-
-        let width = bounds.width
-        let itemWidth = width / CGFloat(maxValue)
+        let itemWidth = effectiveWidth / CGFloat(maxValue) // bound.width may be incorrect when the control is inside a wider container like a VStack
 
         var newValue = Double(location.x / itemWidth).rounded()
         newValue = max(0, min(Double(maxValue), newValue))
