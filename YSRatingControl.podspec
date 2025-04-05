@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 
-  s.name         = 'RatingControl'
+  s.name         = 'YSRatingControl'
   s.version      = '1.0.0'
   s.summary      = 'Fully customizable star ratings for iOS'
   s.homepage     = 'https://github.com/yonat/RatingControl'

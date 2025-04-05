@@ -1,12 +1,12 @@
 # RatingControl
 
-⭐️ Fully customizable star ratings for iOS.
-
-[![Swift Version][swift-image]][swift-url]
-[![License][license-image]][license-url]
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/RatingControl.svg)](https://img.shields.io/cocoapods/v/RatingControl.svg)
-[![Platform](https://img.shields.io/cocoapods/p/RatingControl.svg?style=flat)](http://cocoapods.org/pods/RatingControl)
+[![Swift Version](https://img.shields.io/badge/swift-5.9-orange.svg)](https://swift.org)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.txt)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/YSRatingControl.svg)](https://img.shields.io/cocoapods/v/YSRatingControl.svg)
+[![Platform](https://img.shields.io/cocoapods/p/YSRatingControl.svg?style=flat)](http://cocoapods.org/pods/YSRatingControl)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
+⭐️ Fully customizable star ratings for iOS.
 
 <img align="center" src="Screenshots/RatingControl.png">
 
@@ -109,17 +109,12 @@ struct ContentView: View {
 ### CocoaPods:
 
 ```ruby
-pod 'RatingControl'
+pod 'YSRatingControl'
 ```
 
 ### Swift Package Manager:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/yonat/RatingControl", from: "1.0.0")
-]
-
-[swift-image]:https://img.shields.io/badge/swift-5.9-orange.svg
-[swift-url]: https://swift.org/
-[license-image]: https://img.shields.io/badge/License-MIT-blue.svg
-[license-url]: LICENSE.txt
+    .package(url: "https://github.com/yonat/RatingControl", from: "1.0.0")]
+```
