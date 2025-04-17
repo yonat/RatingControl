@@ -1,7 +1,7 @@
 platform :ios, '13.0'
 use_frameworks!
 
-pod 'RatingControl', :path => '..'
+pod 'YSRatingControl', :path => '..'
 pod 'SwiftQuality', :git => 'https://github.com/yonat/SwiftQuality'
 
 target 'RatingControlDemo' do

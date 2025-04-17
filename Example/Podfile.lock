@@ -1,14 +1,14 @@
 PODS:
-  - RatingControl (1.0.0)
   - SwiftFormat/CLI (0.52.11)
   - SwiftLint (0.54.0)
   - SwiftQuality (2.0.2):
     - SwiftFormat/CLI (= 0.52.11)
     - SwiftLint (= 0.54.0)
+  - YSRatingControl (1.0.0)
 
 DEPENDENCIES:
-  - RatingControl (from `..`)
   - SwiftQuality (from `https://github.com/yonat/SwiftQuality`)
+  - YSRatingControl (from `..`)
 
 SPEC REPOS:
   trunk:
@@ -16,10 +16,10 @@ SPEC REPOS:
     - SwiftLint
 
 EXTERNAL SOURCES:
-  RatingControl:
-    :path: ".."
   SwiftQuality:
     :git: https://github.com/yonat/SwiftQuality
+  YSRatingControl:
+    :path: ".."
 
 CHECKOUT OPTIONS:
   SwiftQuality:
@@ -27,11 +27,11 @@ CHECKOUT OPTIONS:
     :git: https://github.com/yonat/SwiftQuality
 
 SPEC CHECKSUMS:
-  RatingControl: 4ec7f5cc74cd2604f83efb8d30b7045d61397031
   SwiftFormat: 2ca3d0b75754193f0f3ba532291f25ae08dd1e42
   SwiftLint: c1de071d9d08c8aba837545f6254315bc900e211
   SwiftQuality: 3a5a16498170de064cb1e3e462551f8b1c3350a3
+  YSRatingControl: cce3990d8c023c0c8f9dba491cf8d1f805e49de2
 
-PODFILE CHECKSUM: bca5bc6778555827d6fe26082444929fd9aec32d
+PODFILE CHECKSUM: 1a95043e160cc7ecd40afa2cbfef0ace771274df
 
 COCOAPODS: 1.16.2

@@ -5,9 +5,9 @@
 //  Created by Yonat Sharon on 2025-04-05.
 //
 
-import RatingControl
 import SwiftUI
 import UIKit
+import YSRatingControl
 
 class RatingViewController: UIViewController {
     private var currentRating: Double = 3.5
