@@ -17,6 +17,7 @@ public class RatingControl: UIControl {
                 maxValue = 1
             }
             setupImageViews()
+            setupValueCrop()
             updateConstraints()
         }
     }
