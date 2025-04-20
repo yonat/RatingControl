@@ -25,8 +25,8 @@ public class RatingSummaryView: UIView {
         }
     }
 
-    /// Array of Int values for each rating (e.g., [17, 0, 0, 2, 0])
-    public var counts: [Int] = [] {
+    /// Dictionary mapping rating values to counts (e.g., [5: 20, 4: 1, 3: 0, 2: 1, 1: 0])
+    public var counts: [Int: Int] = [:] {
         didSet {
             updateCounts()
         }
@@ -132,10 +132,16 @@ private extension RatingSummaryView {
     }
 
     func updateCounts() {
-        let extraCounts = counts.count - titles.count
-        let counts = extraCounts > 0 ? counts.dropLast(extraCounts) : counts
-        let totalCount = counts.reduce(0, +)
-        let averageRating = totalCount > 0 ? weightedSum() / Double(totalCount) : 0
+        var totalCount = 0
+        var weightedSum = 0
+        for (rating, count) in counts {
+            if rating > titles.count {
+                continue
+            }
+            totalCount += count
+            weightedSum += rating * count
+        }
+        let averageRating = totalCount > 0 ? Double(weightedSum) / Double(totalCount) : 0
 
         // Update header
         headerView.ratingLabel.text = Metrics.ratingFormatter.string(from: NSNumber(value: averageRating)) ?? String(format: "%.1f", averageRating)
@@ -143,23 +149,15 @@ private extension RatingSummaryView {
         headerView.ratingControl.value = averageRating
 
         // Update rating rows
-        for i in 0 ..< counts.count {
-            detailRow(index: i)?.percentage = totalCount > 0 ? Double(counts[i]) / Double(totalCount) : 0
+        let detailsCount = detailsStackView.arrangedSubviews.count
+        for i in 0 ..< detailsCount {
+            detailRow(index: i)?.percentage = totalCount > 0 ? Double(counts[detailsCount - i] ?? 0) / Double(totalCount) : 0
         }
     }
 
     func detailRow(index: Int) -> RatingDetailRow? {
         guard index < detailsStackView.arrangedSubviews.count else { return nil }
         return detailsStackView.arrangedSubviews[index] as? RatingDetailRow
-    }
-
-    func weightedSum() -> Double {
-        var sum = 0.0
-        for (index, count) in counts.enumerated() {
-            let starValue = Double(titles.count - index)
-            sum += starValue * Double(count)
-        }
-        return sum
     }
 }
 
@@ -241,7 +239,7 @@ private class RatingDetailRow: UIStackView {
 #Preview {
     let ratingSummaryView = RatingSummaryView()
     ratingSummaryView.titles = ["Excellent", "Very Good", "Average", "Poor", "Terrible"]
-    ratingSummaryView.counts = [20, 1, 0, 1, 0]
+    ratingSummaryView.counts = [5: 20, 4: 1, 3: 0, 2: 1, 1: 0]
 
     let container = UIView()
     container.addSubview(ratingSummaryView)
